@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html long="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.0">
+    <title>九宫格抽奖</title>
+    <style>
+        body{
+            background: #ffe53a;
+        }
+        .cjhd{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 179px;
+            font-family: FZPangWa-M18S;
+            color: #ea2d42;
+            position: relative;
+            /* text-align: center; */
+            /* background: #000; */
+        }
+        h2{
+            position: relative;
+            width: 392px;
+            height: 100px;
+            background: #fff;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 70px;
+            border: solid 3px #000;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 52.64px;
+        }
+        h3{
+            position: relative;
+            width: 290px;
+            height: 26px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border: solid 3px #000;
+            border-style: none solid;
+            text-align: center;
+            line-height: 1.9;
+            font-size: 52.64px;
+        }
+        .a{
+            position: relative;
+           width: 834.16px;
+           height: 847.25px; 
+           left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 0px auto;
+           background: #ff5467;
+           border-radius: 30px;
+           border: solid 2px #000;
+        }
+        .samllkua{
+            position: relative;
+            width: 768px;
+            height: 768px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin:40px auto;
+        }
+        .fei{
+            float: left;
+            width: 250.72px;
+            height: 251.22px;
+            padding: 2px;
+            text-align: center;
+            line-height: 150px;
+        }
+        a{
+            display: block;
+            width: 250.72px;
+            height: 251.22px;
+            background: url(images/抽奖_07.png) no-repeat top center;
+        }
+        a:hover{
+            background: url(images/抽奖11_07.png) no-repeat top center;
+        }
+        h1{
+            position: relative;
+            width: 716px;
+            height: 136px;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 2.9;
+            font-size: 46.65px;
+            border: 2px solid #000;
+            background: #fff;
+            border-radius: 60px;
+        }
+        h1 b{
+            color: #ff5467;
+        }
+        span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-family: SimHei;
+            font-size: 46.65px;
+        }
+    </style>
+</head>
+<body>
+    <p class="cjhd">抽奖活动</p>
+    <h2>快来抽我啊！</h2>
+    <h3></h3>
+    <div class="a">
+        <div class="samllkua">
+            <div class="fei b1">
+                <img src="images/抽奖_01.png">
+            </div>
+            <div class="fei b2">
+                <img src="images/抽奖_02.png">
+            </div>
+            <div class="fei b3">
+                <img src="images/抽奖_03.png">
+            </div>
+            <div class="fei b4">
+                <img src="images/抽奖_06.png">
+            </div>
+            <div class="fei b5">
+                <a href="#:;"></a>
+            </div>
+            <div class="fei b6">
+                <img src="images/抽奖_05.png">
+            </div>
+            <div class="fei b7">
+                <img src="images/抽奖_08.png">
+            </div>
+            <div class="fei b8">
+                <img src="images/抽奖_03.png">
+            </div>
+            <div class="fei b9">
+                <img src="images/抽奖_09.png">
+            </div>
+        </div>
+    </div>
+    <h1>赶快点点点，<b>抽中豪礼！</b></h1>
+    <span>活动时间：2021年2月-5月</span>
+    <script language=javascript>
+       let bs=document.getElementsByClassName("fei");
+        let arr=[0,1,2,5,8,7,6,3], i=0, count=0, stopTimer;
+        let rand=Math.floor(Math.random()*8+50);
+        function removeTags(tagName,tagClass){
+            var tagElements = document.getElementsByTagName( tagName );
+            for( var m = 0 ; m < tagElements.length ; m++ ){
+                if( tagElements[m].className == tagClass ){
+                    tagElements[m].parentNode.removeChild( tagElements[m] );
+                }
+            }
+        }
+        let around=function(){
+            for (let j = 0; j < arr.length; j++) {
+                removeTags("h5","f5");
+            }
+            var span=document.createElement("h5");
+            span.className="f5";
+            var sdbq=bs[arr[i]];
+            var first=sdbq.firstChild;
+            sdbq.insertBefore(span,first);
+            span.style.position="absolute";
+            span.style.width="250.72px";
+            span.style.height="251.22px";
+            span.style.margin="0";
+            span.style.backgroundColor="#a3057c";
+            span.style.opacity="0.5";
+            span.style.borderRadius="10px";
+            span.style.padding="2px";
+            i++;
+            if(i===arr.length){
+                i=0;
+            }
+                count++;
+            if(count===5 || count===45){
+                clearInterval(stopTimer);
+                stopTimer=setInterval(around,200)
+            }
+            if(count===10 || count===35){
+                clearInterval(stopTimer);
+                stopTimer=setInterval(around,100)
+            }
+            if(count===15){
+                clearInterval(stopTimer);
+                stopTimer=setInterval(around,50)
+            }
+            if(count===rand){
+                clearInterval(stopTimer);
+                setTimeout(function(){
+                    document.getElementsByTagName("h1")[0].style.color="#ff5467"
+                    if(i===1){
+                    document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得弥豆子手办1个"
+                    }else if(i===2){
+                        document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得30积分"
+                    }else if(i===3){
+                        document.getElementsByTagName("h1")[0].innerHTML="谢谢你的参与！再接再厉！"
+                    }else if(i===4){
+                        document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得华为手机1个"
+                    }else if(i===5){
+                        document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得短袖1件"
+                    }else if(i===6){
+                        document.getElementsByTagName("h1")[0].innerHTML="谢谢你的参与！再接再厉！"
+                    }else if(i===7){
+                        document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得笔记本1本"
+                    }else if(i===0){
+                        document.getElementsByTagName("h1")[0].innerHTML="恭喜你获得120积分"
+                    }else{
+
+                    }
+                },1000)
+                // count=0;
+            }
+        }
+        let start=function(){
+            bs[4].removeEventListener("click",start);
+            stopTimer=setInterval(around,300)
+        }
+        bs[4].addEventListener("click",start); 
+    </script>
+</body>
+</html>
